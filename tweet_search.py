@@ -12,6 +12,6 @@ parser.add_argument("username", nargs="*", default="elonmusk",
 # parse the arguments into standard input
 args = parser.parse_args()
 
-# check if the username is valid
+# check if the username is valid and call function if it is
 if len(args.username) != 0:
     return_user(args.username)
