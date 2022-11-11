@@ -6,7 +6,8 @@ from search_by_username import return_user
 parser = argparse.ArgumentParser(description="Search by username")
 
 # add arguments to the parser
-parser.add_argument("username", help="Enter the username you want to search")
+parser.add_argument("username", nargs="*", default="elonmusk",
+                    help="Enter the username you want to search")
 
 # parse the arguments into standard input
 args = parser.parse_args()

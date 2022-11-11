@@ -10,8 +10,6 @@ client = tweepy.Client(bearer_token=os.getenv('BEARER_TOKEN'))
 
 def return_user(username):
 
-    username = input("Enter the username you want to search: ")
-
     response = client.get_user(username=username, user_fields=[
                                "profile_image_url", "description", "created_at", "location", "protected", "public_metrics", "url"])
 
