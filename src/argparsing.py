@@ -4,10 +4,13 @@ class ValidationException(Exception):
     pass
 
 def validate_username(username):
-    if len(username) > 15:
-        raise ValidationException("Length of username cannot exceed 15 characters!")
+    if not isinstance(username, str):
+        raise argparse.ArgumentTypeError("Username should be a string object")
 
-def main():
+    if len(username) > 15:
+        raise argparse.ArgumentTypeError("Username should not contain more than 15 characters")
+
+def get_args():
     parser = argparse.ArgumentParser(description="OSINT Tool for Harvesting Data From Twitter.")
 
     # parser.add_argument("-u", "--username", type=str, nargs="+", help="Username(s) to Search")
@@ -17,8 +20,9 @@ def main():
     # parser.add_argument("-k", "--keyword", type=str, help="Search tweets based on keyword")
 
     args = parser.parse_args()
-    if args.username is not None:
+
+    if args.username:
         validate_username(args.username)
 
-if __name__ == "__main__":
-    main()
+    return args
+
